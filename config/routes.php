@@ -37,6 +37,9 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['items/(:any)'] = 'items/view/$1';
+// $route['items'] = 'items';
+
 $route['bps/(:any)'] = 'bps/view/$1';
 $route['bps'] = 'bps';
 
