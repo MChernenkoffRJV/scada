@@ -10,11 +10,6 @@ class Bps_model extends CI_Model {
 	{
 	if ($bp_id === FALSE)
 	{
-		// $this->db->select('ocrd.cardcode, ocrd.cardname, ocrd_more.link as link');
-		// $this->db->from('ocrd');
-		// $this->db->join('ocrd_more', 'ocrd.cardcode = ocrd_more.cardcode', 'left');
-		
-		// $query = $this->db->get();
 		$query = $this->db->get('ocrd_view');
 		return $query->result_array();
 	}

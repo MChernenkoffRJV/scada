@@ -6,8 +6,10 @@ class Items extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('items_model');
+		$this->load->model('orders_model');
 	}
 
+/*
 	public function index()
 	{
 		$data['items'] = $this->items_model->get_items();
@@ -17,7 +19,7 @@ class Items extends CI_Controller {
 		$this->load->view('items/index', $data);
 		$this->load->view('templates/footer');	
 	}
-
+*/
 	public function view($item_id)
 	{
 		$data['items_item'] = $this->items_model->get_items($item_id);
@@ -25,42 +27,34 @@ class Items extends CI_Controller {
 		{
 			show_404();
 		}	
+		
 		$data['title'] = $data['items_item']['ItemName'];
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('items/view', $data);
 		$this->load->view('items/links', $data);
+
+		$data['suppliers_items'] = $this->orders_model->get_suppliers_for_item($item_id);
 		$this->load->view('items/suppliers', $data);
+	
+		$data['orders_items'] = $this->orders_model->get_orders_for_item($item_id);
 		$this->load->view('items/orders', $data);
+	
 		$this->load->view('templates/footer');		
 	}	
-	
-	/* 
-	public function create()
+	// items/orders is routed to this function
+	public function orders_for($item_id)
 	{
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-
-		$data['title'] = 'Create a news item';
-
-		$this->form_validation->set_rules('title', 'Title', 'required');
-		$this->form_validation->set_rules('text', 'text', 'required');
-
-		if ($this->form_validation->run() === FALSE)
-		{
-			$this->load->view('templates/header', $data);
-			$this->load->view('news/create');
-			$this->load->view('templates/footer');
-
-		}
-		else
-		{
-			$this->news_model->set_news();
-			$this->load->view('news/success');
-		}
+		$data['orders_items'] = $this->orders_model->get_orders_for_item($item_id);
+		$this->load->view('items/orders', $data);
 	}
-	*/
-}
 
-/* End of file bps.php */
-/* Location: ./application/controllers/bps.php */
+	// items/suppliers is routed to this function
+	public function suppliers_for($item_id)
+	{
+		$data['suppliers_items'] = $this->orders_model->get_suppliers_for_item($item_id);
+		$this->load->view('items/suppliers', $data);
+	}
+}
+/* End of file items.php */
+/* Location: ./scada/controllers/items.php */

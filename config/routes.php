@@ -37,15 +37,16 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['items/orders_for/(:any)'] = 'items/orders_for/$1';
+$route['items/suppliers_for/(:any)'] = 'items/suppliers_for/$1';
 $route['items/(:any)'] = 'items/view/$1';
 // $route['items'] = 'items';
 
 $route['bps/(:any)'] = 'bps/view/$1';
 $route['bps'] = 'bps';
 
-$route['news/create'] = 'news/create';
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
+$route['orders/(:any)'] = 'orders/view/$1';
+// $route['items'] = 'items';
 
 $route['default_controller'] = "pages/view";
 $route['(:any)'] = 'pages/view/$1';
