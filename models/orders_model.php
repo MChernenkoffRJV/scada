@@ -12,7 +12,11 @@ class Orders_model extends CI_Model {
 	{
 		return false;
 	}
-	$query = $this->db->get_where('vOrders', array('ItemCode' => $item_id));
+	$this->db->select('*');
+	$this->db->from('vOrders');
+	$this->db->where('ItemCode', $item_id);
+	$this->db->order_by('DocDate', 'desc');
+	$query = $this->db->get();
 	return $query->result_array();
 	}
 	

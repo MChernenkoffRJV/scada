@@ -5,7 +5,9 @@
 	<?php foreach ($suppliers_items as $supplier) {
 		echo '<tr>';
 		echo '<td>'.$supplier['cardname'].'</td>';
-		echo '<td>'.$supplier['cardcode'].'</td>';
+		echo '<td>'.'<a href="/index.php/bps/' . $supplier['cardcode'].'">';
+		echo '<img src="/images/yellow_arrow.gif" height=16 width=16>'.$supplier['cardcode'].'</a>';
+		echo '</td>';
 		echo '</tr>';
 	}		
 	?>

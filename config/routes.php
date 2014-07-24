@@ -40,16 +40,16 @@
 $route['items/orders_for/(:any)'] = 'items/orders_for/$1';
 $route['items/suppliers_for/(:any)'] = 'items/suppliers_for/$1';
 $route['items/(:any)'] = 'items/view/$1';
-// $route['items'] = 'items';
+// not showing a full list of items 
+//$route['items'] = 'items';
 
 $route['bps/(:any)'] = 'bps/view/$1';
 $route['bps'] = 'bps';
 
-$route['orders/(:any)'] = 'orders/view/$1';
-// $route['items'] = 'items';
+// $route['orders/(:any)'] = 'orders/view/$1';
 
-$route['default_controller'] = "pages/view";
-$route['(:any)'] = 'pages/view/$1';
+$route['default_controller'] = "welcome";
+$route['(:any)'] = 'items/view/$1';
 //$route['404_override'] = '';
 
 
